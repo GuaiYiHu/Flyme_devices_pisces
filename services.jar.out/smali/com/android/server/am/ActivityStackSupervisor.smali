@@ -14373,7 +14373,7 @@
 
     move-object/from16 v2, p3
 
-    move-object/from16 v4, v30
+    move-object/from16 v4, v32
 
     invoke-static {v0, v1, v2, v4}, Lcom/android/server/am/ActivityStackSupervisor$FlymeInjector;->changeMayInterceptPackage(Lcom/android/server/am/ActivityStackSupervisor;ILjava/lang/String;Landroid/content/pm/ActivityInfo;)Z
 
