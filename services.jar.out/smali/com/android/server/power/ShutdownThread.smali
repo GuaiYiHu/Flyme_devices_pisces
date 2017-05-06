@@ -1153,63 +1153,14 @@
 .end method
 
 .method private static getUiContext(Landroid/content/Context;)Landroid/content/Context;
-    .locals 3
+    .locals 1
     .param p0, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 1003
-    const/4 v0, 0x0
-
-    .line 1004
-    .local v0, "uiContext":Landroid/content/Context;
-    if-eqz p0, :cond_0
-
-    .line 1005
-    invoke-static {p0}, Lorg/cyanogenmod/internal/util/ThemeUtils;->createUiContext(Landroid/content/Context;)Landroid/content/Context;
-
-    move-result-object v0
-
-    .line 1006
-    .local v0, "uiContext":Landroid/content/Context;
-    invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
-
-    move-result-object v1
-
-    const-string/jumbo v2, "android.hardware.type.television"
-
-    invoke-virtual {v1, v2}, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    const v1, #android:style@Theme.Leanback.Dialog.Alert#t
-
-    invoke-virtual {v0, v1}, Landroid/content/Context;->setTheme(I)V
-
-    .end local v0    # "uiContext":Landroid/content/Context;
-    :cond_0
-    :goto_0
-    if-eqz v0, :cond_2
-
-    :goto_1
-    return-object v0
-
-    .line 1009
-    .restart local v0    # "uiContext":Landroid/content/Context;
-    :cond_1
-    const v1, #android:style@Theme.Power.Dialog#t
-
-    invoke-virtual {v0, v1}, Landroid/content/Context;->setTheme(I)V
-
-    goto :goto_0
-
-    .end local v0    # "uiContext":Landroid/content/Context;
-    :cond_2
     move-object v0, p0
 
-    .line 1012
-    goto :goto_1
+    return-object v0
+
 .end method
 
 .method private static isAdvancedRebootPossible(Landroid/content/Context;)Z
