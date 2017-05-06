@@ -1440,7 +1440,7 @@
     invoke-static {v2, v3}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 295
-    invoke-direct {p0}, Lcom/android/server/storage/DeviceStorageMonitorService;->sendNotification()V
+    #invoke-direct {p0}, Lcom/android/server/storage/DeviceStorageMonitorService;->sendNotification()V
 
     goto :goto_2
 
