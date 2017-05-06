@@ -139,7 +139,8 @@ board_modify_apps := TeleService
 # You should configure the property according to your device and your ID with replace the "Nexus-6P_Unofficial".
 override_property += \
     ro.flyme.romer=GuaiYiHu \
-    ro.product.model_romer=pisces_GuaiYiHu
+    ro.product.model_romer=pisces_GuaiYiHu \
+    persist.perf.wm_static_blur=false
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
