@@ -2,4 +2,5 @@
 /autopatch/*
 /out/*
 /autopatch_bak/*
+/history_package/*
 releasetools.pyc
