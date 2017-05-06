@@ -138,8 +138,8 @@ vendor_modify_jars := framework services telephony-common wifi-service
 # The default value is Nexus-6P_Unofficial.
 # You should configure the property according to your device and your ID with replace the "Nexus-6P_Unofficial".
 override_property += \
-    ro.flyme.romer=Unofficial \
-    ro.product.model_romer=Nexus-6P_Unofficial
+    ro.flyme.romer=GuaiYiHu \
+    ro.product.model_romer=pisces_GuaiYiHu
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
