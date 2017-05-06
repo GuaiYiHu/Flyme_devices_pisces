@@ -1,0 +1,14 @@
+
+if [ "$#" == "0" ]; then
+    echo "Usage: nfcee on|off                       Turn Card emulation route On|Off"
+    echo "       nfcee Cap2Cmd  applet.cap          convert applet.cap (Java2ME) to applet.cap.apdu"
+    echo "       nfcee ApduTool applet.cap.apdu     execute applet.cap.apdu (Java2ME) script to transceive APDU to se"
+    echo "       nfcee PushCmd  input.cmd           execute input.cmd (Oberthur) script to transceive APDU to se"
+fi
+if [ "$#" == "1" ]; then
+    am start -a $1 -n com.broadcom.apps.nfceetool/.NfcEeToolActivity
+fi
+if [ "$#" == "2" ]; then
+    am start -a $2 -n com.broadcom.apps.nfceetool/.$1Activity
+fi
+

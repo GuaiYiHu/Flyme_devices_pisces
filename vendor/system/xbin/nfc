@@ -1,0 +1,7 @@
+
+if [ "$#" == "0" ]; then
+    echo "Usage: nfc on|off"
+else
+	am start -a $1 -n com.brcm.nfccontrol/.NfcControlActivity    
+fi
+

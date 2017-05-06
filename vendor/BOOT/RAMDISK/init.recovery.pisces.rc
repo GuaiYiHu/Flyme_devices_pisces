@@ -1,0 +1,20 @@
+# vim:expandtab
+
+on early-init
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
+
+on fs
+    exec /sbin/auto-mkfs
+    wait /tmp/auto-mkfs
+
+on early-boot
+    setprop ro.tw_has_dualboot 1
+    wait /dev/block/mmcblk0p19
+    wait /dev/block/mmcblk0p20
+    wait /dev/block/mmcblk0p24
+    wait /dev/block/mmcblk0p25
+    # load dualboot.system & dualboot.dualdata
+    exec /sbin/dualboot -ll load
