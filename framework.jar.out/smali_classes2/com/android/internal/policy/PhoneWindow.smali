@@ -10,6 +10,7 @@
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
         Lcom/android/internal/policy/PhoneWindow$SettingsObserver;,
+        Lcom/android/internal/policy/PhoneWindow$FlymeInjector;,
         Lcom/android/internal/policy/PhoneWindow$WindowManagerHolder;,
         Lcom/android/internal/policy/PhoneWindow$PanelMenuPresenterCallback;,
         Lcom/android/internal/policy/PhoneWindow$ActionMenuPresenterCallback;,

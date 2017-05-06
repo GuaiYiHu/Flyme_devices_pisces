@@ -436,6 +436,8 @@
     invoke-virtual/range {v2 .. v12}, Landroid/app/ResourcesManager;->getTopLevelResources(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;ILjava/lang/String;Landroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;Landroid/content/Context;Z)Landroid/content/res/Resources;
 
     move-result-object v14
+    
+    invoke-direct {p0, v14}, Landroid/app/ContextImpl;->setFlymeThemeResource(Landroid/content/res/Resources;)V
 
     .line 1885
     :cond_4

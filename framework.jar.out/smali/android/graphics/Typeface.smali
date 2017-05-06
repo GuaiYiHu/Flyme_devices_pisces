@@ -2123,6 +2123,477 @@
     return v0
 .end method
 
+.method private static init()V
+    .locals 27
+
+    .prologue
+    invoke-static {}, Landroid/graphics/Typeface;->getSystemFontConfigLocation()Ljava/io/File;
+
+    move-result-object v20
+
+    .local v20, "systemFontConfigLocation":Ljava/io/File;
+    new-instance v7, Ljava/io/File;
+
+    const-string v24, "fonts.xml"
+
+    move-object/from16 v0, v20
+
+    move-object/from16 v1, v24
+
+    invoke-direct {v7, v0, v1}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    .local v7, "configFilename":Ljava/io/File;
+    :try_start_0
+    new-instance v17, Ljava/io/FileInputStream;
+
+    move-object/from16 v0, v17
+
+    invoke-direct {v0, v7}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+
+    .local v17, "fontsIn":Ljava/io/FileInputStream;
+    invoke-static/range {v17 .. v17}, Landroid/graphics/FontListParser;->parse(Ljava/io/InputStream;)Landroid/graphics/FontListParser$Config;
+
+    move-result-object v15
+
+    .local v15, "fontConfig":Landroid/graphics/FontListParser$Config;
+    new-instance v14, Ljava/util/ArrayList;
+
+    invoke-direct {v14}, Ljava/util/ArrayList;-><init>()V
+
+    .local v14, "familyList":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/FontFamily;>;"
+    const/16 v18, 0x0
+
+    .local v18, "i":I
+    :goto_0
+    iget-object v0, v15, Landroid/graphics/FontListParser$Config;->families:Ljava/util/List;
+
+    move-object/from16 v24, v0
+
+    invoke-interface/range {v24 .. v24}, Ljava/util/List;->size()I
+
+    move-result v24
+
+    move/from16 v0, v18
+
+    move/from16 v1, v24
+
+    if-ge v0, v1, :cond_2
+
+    iget-object v0, v15, Landroid/graphics/FontListParser$Config;->families:Ljava/util/List;
+
+    move-object/from16 v24, v0
+
+    move-object/from16 v0, v24
+
+    move/from16 v1, v18
+
+    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v12
+
+    check-cast v12, Landroid/graphics/FontListParser$Family;
+
+    .local v12, "f":Landroid/graphics/FontListParser$Family;
+    if-eqz v18, :cond_0
+
+    iget-object v0, v12, Landroid/graphics/FontListParser$Family;->name:Ljava/lang/String;
+
+    move-object/from16 v24, v0
+
+    if-nez v24, :cond_1
+
+    :cond_0
+    invoke-static {v12}, Landroid/graphics/Typeface;->makeFamilyFromParsed(Landroid/graphics/FontListParser$Family;)Landroid/graphics/FontFamily;
+
+    move-result-object v24
+
+    move-object/from16 v0, v24
+
+    invoke-interface {v14, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    :cond_1
+    add-int/lit8 v18, v18, 0x1
+
+    goto :goto_0
+
+    .end local v12    # "f":Landroid/graphics/FontListParser$Family;
+    :cond_2
+    invoke-interface {v14}, Ljava/util/List;->size()I
+
+    move-result v24
+
+    move/from16 v0, v24
+
+    new-array v0, v0, [Landroid/graphics/FontFamily;
+
+    move-object/from16 v24, v0
+
+    move-object/from16 v0, v24
+
+    invoke-interface {v14, v0}, Ljava/util/List;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+
+    move-result-object v24
+
+    check-cast v24, [Landroid/graphics/FontFamily;
+
+    sput-object v24, Landroid/graphics/Typeface;->sFallbackFonts:[Landroid/graphics/FontFamily;
+
+    sget-object v24, Landroid/graphics/Typeface;->sFallbackFonts:[Landroid/graphics/FontFamily;
+
+    invoke-static/range {v24 .. v24}, Landroid/graphics/Typeface;->createFromFamilies([Landroid/graphics/FontFamily;)Landroid/graphics/Typeface;
+
+    move-result-object v24
+
+    invoke-static/range {v24 .. v24}, Landroid/graphics/Typeface;->setDefault(Landroid/graphics/Typeface;)V
+
+    new-instance v21, Ljava/util/HashMap;
+
+    invoke-direct/range {v21 .. v21}, Ljava/util/HashMap;-><init>()V
+
+    .local v21, "systemFonts":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Landroid/graphics/Typeface;>;"
+    const/16 v18, 0x0
+
+    :goto_1
+    iget-object v0, v15, Landroid/graphics/FontListParser$Config;->families:Ljava/util/List;
+
+    move-object/from16 v24, v0
+
+    invoke-interface/range {v24 .. v24}, Ljava/util/List;->size()I
+
+    move-result v24
+
+    move/from16 v0, v18
+
+    move/from16 v1, v24
+
+    if-ge v0, v1, :cond_5
+
+    iget-object v0, v15, Landroid/graphics/FontListParser$Config;->families:Ljava/util/List;
+
+    move-object/from16 v24, v0
+
+    move-object/from16 v0, v24
+
+    move/from16 v1, v18
+
+    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v12
+
+    check-cast v12, Landroid/graphics/FontListParser$Family;
+
+    .restart local v12    # "f":Landroid/graphics/FontListParser$Family;
+    iget-object v0, v12, Landroid/graphics/FontListParser$Family;->name:Ljava/lang/String;
+
+    move-object/from16 v24, v0
+
+    if-eqz v24, :cond_3
+
+    if-nez v18, :cond_4
+
+    sget-object v22, Landroid/graphics/Typeface;->sDefaultTypeface:Landroid/graphics/Typeface;
+
+    .local v22, "typeface":Landroid/graphics/Typeface;
+    :goto_2
+    iget-object v0, v12, Landroid/graphics/FontListParser$Family;->name:Ljava/lang/String;
+
+    move-object/from16 v24, v0
+
+    move-object/from16 v0, v21
+
+    move-object/from16 v1, v24
+
+    move-object/from16 v2, v22
+
+    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-object/from16 v0, v22
+
+    move-object/from16 v1, v21
+
+    invoke-static {v12, v0, v1}, Landroid/graphics/Typeface;->putFlymeSystemFonts(Landroid/graphics/FontListParser$Family;Landroid/graphics/Typeface;Ljava/util/Map;)V
+
+    .end local v22    # "typeface":Landroid/graphics/Typeface;
+    :cond_3
+    add-int/lit8 v18, v18, 0x1
+
+    goto :goto_1
+
+    :cond_4
+    invoke-static {v12}, Landroid/graphics/Typeface;->makeFamilyFromParsed(Landroid/graphics/FontListParser$Family;)Landroid/graphics/FontFamily;
+
+    move-result-object v16
+
+    .local v16, "fontFamily":Landroid/graphics/FontFamily;
+    const/16 v24, 0x1
+
+    move/from16 v0, v24
+
+    new-array v13, v0, [Landroid/graphics/FontFamily;
+
+    const/16 v24, 0x0
+
+    aput-object v16, v13, v24
+
+    .local v13, "families":[Landroid/graphics/FontFamily;
+    invoke-static {v13}, Landroid/graphics/Typeface;->createFromFamiliesWithDefault([Landroid/graphics/FontFamily;)Landroid/graphics/Typeface;
+
+    move-result-object v22
+
+    .restart local v22    # "typeface":Landroid/graphics/Typeface;
+    goto :goto_2
+
+    .end local v12    # "f":Landroid/graphics/FontListParser$Family;
+    .end local v13    # "families":[Landroid/graphics/FontFamily;
+    .end local v16    # "fontFamily":Landroid/graphics/FontFamily;
+    .end local v22    # "typeface":Landroid/graphics/Typeface;
+    :cond_5
+    iget-object v0, v15, Landroid/graphics/FontListParser$Config;->aliases:Ljava/util/List;
+
+    move-object/from16 v24, v0
+
+    invoke-interface/range {v24 .. v24}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v5
+
+    .local v5, "alias$iterator":Ljava/util/Iterator;
+    :goto_3
+    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v24
+
+    if-eqz v24, :cond_7
+
+    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Landroid/graphics/FontListParser$Alias;
+
+    .local v4, "alias":Landroid/graphics/FontListParser$Alias;
+    iget-object v0, v4, Landroid/graphics/FontListParser$Alias;->toName:Ljava/lang/String;
+
+    move-object/from16 v24, v0
+
+    move-object/from16 v0, v21
+
+    move-object/from16 v1, v24
+
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Landroid/graphics/Typeface;
+
+    .local v6, "base":Landroid/graphics/Typeface;
+    move-object/from16 v19, v6
+
+    .local v19, "newFace":Landroid/graphics/Typeface;
+    iget v0, v4, Landroid/graphics/FontListParser$Alias;->weight:I
+
+    move/from16 v23, v0
+
+    .local v23, "weight":I
+    const/16 v24, 0x190
+
+    move/from16 v0, v23
+
+    move/from16 v1, v24
+
+    if-eq v0, v1, :cond_6
+
+    new-instance v19, Landroid/graphics/Typeface;
+
+    .end local v19    # "newFace":Landroid/graphics/Typeface;
+    iget-wide v0, v6, Landroid/graphics/Typeface;->native_instance:J
+
+    move-wide/from16 v24, v0
+
+    move-wide/from16 v0, v24
+
+    move/from16 v2, v23
+
+    invoke-static {v0, v1, v2}, Landroid/graphics/Typeface;->nativeCreateWeightAlias(JI)J
+
+    move-result-wide v24
+
+    move-object/from16 v0, v19
+
+    move-wide/from16 v1, v24
+
+    invoke-direct {v0, v1, v2}, Landroid/graphics/Typeface;-><init>(J)V
+
+    .restart local v19    # "newFace":Landroid/graphics/Typeface;
+    :cond_6
+    iget-object v0, v4, Landroid/graphics/FontListParser$Alias;->name:Ljava/lang/String;
+
+    move-object/from16 v24, v0
+
+    move-object/from16 v0, v21
+
+    move-object/from16 v1, v24
+
+    move-object/from16 v2, v19
+
+    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-object/from16 v0, v19
+
+    move-object/from16 v1, v21
+
+    invoke-static {v4, v0, v1}, Landroid/graphics/Typeface;->putFlymeSystemFonts(Landroid/graphics/FontListParser$Alias;Landroid/graphics/Typeface;Ljava/util/Map;)V
+
+    :try_end_0
+    .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_3
+    .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_0 .. :try_end_0} :catch_2
+
+    goto :goto_3
+
+    .end local v4    # "alias":Landroid/graphics/FontListParser$Alias;
+    .end local v5    # "alias$iterator":Ljava/util/Iterator;
+    .end local v6    # "base":Landroid/graphics/Typeface;
+    .end local v14    # "familyList":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/FontFamily;>;"
+    .end local v15    # "fontConfig":Landroid/graphics/FontListParser$Config;
+    .end local v17    # "fontsIn":Ljava/io/FileInputStream;
+    .end local v18    # "i":I
+    .end local v19    # "newFace":Landroid/graphics/Typeface;
+    .end local v21    # "systemFonts":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Landroid/graphics/Typeface;>;"
+    .end local v23    # "weight":I
+    :catch_0
+    move-exception v10
+
+    .local v10, "e":Ljava/lang/RuntimeException;
+    sget-object v24, Landroid/graphics/Typeface;->TAG:Ljava/lang/String;
+
+    const-string v25, "Didn\'t create default family (most likely, non-Minikin build)"
+
+    move-object/from16 v0, v24
+
+    move-object/from16 v1, v25
+
+    invoke-static {v0, v1, v10}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .end local v10    # "e":Ljava/lang/RuntimeException;
+    :goto_4
+    return-void
+
+    .restart local v5    # "alias$iterator":Ljava/util/Iterator;
+    .restart local v14    # "familyList":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/FontFamily;>;"
+    .restart local v15    # "fontConfig":Landroid/graphics/FontListParser$Config;
+    .restart local v17    # "fontsIn":Ljava/io/FileInputStream;
+    .restart local v18    # "i":I
+    .restart local v21    # "systemFonts":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Landroid/graphics/Typeface;>;"
+    :cond_7
+    :try_start_1
+    sput-object v21, Landroid/graphics/Typeface;->sSystemFontMap:Ljava/util/Map;
+    :try_end_1
+    .catch Ljava/lang/RuntimeException; {:try_start_1 .. :try_end_1} :catch_0
+    .catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_3
+    .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_1 .. :try_end_1} :catch_2
+
+    goto :goto_4
+
+    .end local v5    # "alias$iterator":Ljava/util/Iterator;
+    .end local v14    # "familyList":Ljava/util/List;, "Ljava/util/List<Landroid/graphics/FontFamily;>;"
+    .end local v15    # "fontConfig":Landroid/graphics/FontListParser$Config;
+    .end local v17    # "fontsIn":Ljava/io/FileInputStream;
+    .end local v18    # "i":I
+    .end local v21    # "systemFonts":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Landroid/graphics/Typeface;>;"
+    :catch_1
+    move-exception v8
+
+    .local v8, "e":Ljava/io/FileNotFoundException;
+    sget-object v24, Landroid/graphics/Typeface;->TAG:Ljava/lang/String;
+
+    new-instance v25, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v25 .. v25}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v26, "Error opening "
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
+
+    invoke-virtual {v0, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    invoke-virtual/range {v25 .. v25}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v25
+
+    invoke-static/range {v24 .. v25}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_4
+
+    .end local v8    # "e":Ljava/io/FileNotFoundException;
+    :catch_2
+    move-exception v11
+
+    .local v11, "e":Lorg/xmlpull/v1/XmlPullParserException;
+    sget-object v24, Landroid/graphics/Typeface;->TAG:Ljava/lang/String;
+
+    new-instance v25, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v25 .. v25}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v26, "XML parse exception for "
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
+
+    invoke-virtual {v0, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    invoke-virtual/range {v25 .. v25}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v25
+
+    invoke-static/range {v24 .. v25}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_4
+
+    .end local v11    # "e":Lorg/xmlpull/v1/XmlPullParserException;
+    :catch_3
+    move-exception v9
+
+    .local v9, "e":Ljava/io/IOException;
+    sget-object v24, Landroid/graphics/Typeface;->TAG:Ljava/lang/String;
+
+    new-instance v25, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v25 .. v25}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v26, "Error reading "
+
+    invoke-virtual/range {v25 .. v26}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    move-object/from16 v0, v25
+
+    invoke-virtual {v0, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v25
+
+    invoke-virtual/range {v25 .. v25}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v25
+
+    invoke-static/range {v24 .. v25}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_4
+.end method
 
 .method public static isSystemTypeface(Landroid/graphics/Typeface;)Z
     .locals 1

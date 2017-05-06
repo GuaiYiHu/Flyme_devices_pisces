@@ -20674,6 +20674,45 @@
     return-void
 .end method
 
+.method getTopLevelResources(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;ILandroid/content/res/Configuration;Landroid/app/LoadedApk;)Landroid/content/res/Resources;
+    .locals 8
+    .param p1, "resDir"    # Ljava/lang/String;
+    .param p2, "splitResDirs"    # [Ljava/lang/String;
+    .param p3, "overlayDirs"    # [Ljava/lang/String;
+    .param p4, "libDirs"    # [Ljava/lang/String;
+    .param p5, "displayId"    # I
+    .param p6, "overrideConfiguration"    # Landroid/content/res/Configuration;
+    .param p7, "pkgInfo"    # Landroid/app/LoadedApk;
+
+    .prologue
+    iget-object v0, p0, Landroid/app/ActivityThread;->mResourcesManager:Landroid/app/ResourcesManager;
+
+    invoke-virtual {p7}, Landroid/app/LoadedApk;->getCompatibilityInfo()Landroid/content/res/CompatibilityInfo;
+
+    move-result-object v7
+
+    move-object v1, p1
+
+    move-object v2, p2
+
+    move-object v3, p3
+
+    move-object v4, p4
+
+    move v5, p5
+
+    move-object v6, p6
+
+    invoke-virtual/range {v0 .. v7}, Landroid/app/ResourcesManager;->getTopLevelResources(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;ILandroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;)Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    move-object/from16 v1, p7
+
+    invoke-static {v1, v0}, Landroid/app/ActivityThread$FlymeInjector;->setFlymeThemeResource(Landroid/app/LoadedApk;Landroid/content/res/Resources;)V
+
+    return-object v0
+.end method
 
 .method handleShrinkMemory(I)V
     .locals 5
