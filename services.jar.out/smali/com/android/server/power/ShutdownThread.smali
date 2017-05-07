@@ -1158,6 +1158,9 @@
 
     .prologue
     .line 1003
+    move-object v0, p0
+
+    return-object v0
     const/4 v0, 0x0
 
     .line 1004
