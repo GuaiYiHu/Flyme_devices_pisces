@@ -439,6 +439,18 @@ on boot
     # Tweak background writeout
     write /proc/sys/vm/dirty_expire_centisecs 200
     write /proc/sys/vm/dirty_background_ratio  5
+    
+    # Thermal Tweaks
+    write /sys/class/thermal/thermal_zone0/trip_point_0_temp 180000
+    write /sys/class/thermal/thermal_zone0/trip_point_2_temp 240000
+    write /sys/class/thermal/thermal_zone1/trip_point_0_temp 180000
+    write /sys/class/thermal/thermal_zone1/trip_point_2_temp 240000
+    write /sys/class/thermal/thermal_zone5/trip_point_0_temp 180000
+    chmod 0444 /sys/class/thermal/thermal_zone0/trip_point_0_temp;
+    chmod 0444 /sys/class/thermal/thermal_zone0/trip_point_2_temp;
+    chmod 0444 /sys/class/thermal/thermal_zone1/trip_point_0_temp;
+    chmod 0444 /sys/class/thermal/thermal_zone1/trip_point_2_temp;
+    chmod 0444 /sys/class/thermal/thermal_zone5/trip_point_0_temp
 
     # Permissions for System Server and daemons.
     chown radio system /sys/android_power/state
