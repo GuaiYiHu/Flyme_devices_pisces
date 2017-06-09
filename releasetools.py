@@ -11,7 +11,8 @@ ui_print("* Flyme6 based on Android6.0");
 ui_print("*");
 ui_print("* Powered by GuaiYiHu");
 ui_print("* Now loading Flyme...");
-ui_print("******************************************");\n''' + edify.script[0]
+ui_print("******************************************");
+mount("ext4", "EMMC", "/dev/block/platform/sdhci-tegra.3/by-name/userdata", "/data", "");\n''' + edify.script[0]
 
 def FullOTA_InstallEnd(info):
     edify = info.script
