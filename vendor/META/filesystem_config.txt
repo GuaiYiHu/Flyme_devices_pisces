@@ -1744,6 +1744,8 @@ system/priv-app/DownloadProvider 0 0 755 selabel=u:object_r:system_file:s0 capab
 system/priv-app/DownloadProvider/DownloadProvider.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/ExternalStorageProvider 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/ExternalStorageProvider/ExternalStorageProvider.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/priv-app/Extra 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/priv-app/Extra/Extra.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/FusedLocation 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/FusedLocation/FusedLocation.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/InputDevices 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
