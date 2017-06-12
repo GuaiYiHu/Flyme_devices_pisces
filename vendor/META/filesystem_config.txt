@@ -13,6 +13,8 @@ system/app/Bluetooth/lib/arm 0 0 755 selabel=u:object_r:system_file:s0 capabilit
 system/app/Bluetooth/lib/arm/libbluetooth_jni.so 0 0 777 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/app/BluetoothMidiService 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/app/BluetoothMidiService/BluetoothMidiService.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/app/Brevent 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/app/Brevent/Brevent.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/app/Browser 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/app/Browser/Browser.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/app/Calendar 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0

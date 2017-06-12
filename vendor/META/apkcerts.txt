@@ -4,6 +4,7 @@ name="BackupRestoreConfirmation.apk" certificate="build/security/platform.x509.p
 name="BasicDreams.apk" certificate="PRESIGNED" private_key=""
 name="Bluetooth.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
 name="BluetoothMidiService.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
+name="Brevent.apk" certificate="PRESIGNED" private_key=""
 name="Browser.apk" certificate="PRESIGNED" private_key=""
 name="Calendar.apk" certificate="PRESIGNED" private_key=""
 name="CalendarProvider.apk" certificate="PRESIGNED" private_key=""
