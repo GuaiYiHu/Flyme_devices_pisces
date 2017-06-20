@@ -225,7 +225,7 @@
     .param p1, "drawable"    # Landroid/graphics/drawable/Drawable;
 
     .prologue
-    const v10, 0x1010367
+    const v10, #android:attr@state_hovered#t
 
     const/16 v9, 0x190
 
@@ -252,13 +252,13 @@
 
     .line 7859
     .local v2, "stateListDrawable":Landroid/graphics/drawable/StateListDrawable;
-    const v3, 0x10100a7
+    const v3, #android:attr@state_pressed#t
 
-    const v4, 0x101009e
+    const v4, #android:attr@state_enabled#t
 
-    const v5, 0x101009c
+    const v5, #android:attr@state_focused#t
 
-    const v6, 0x101009d
+    const v6, #android:attr@state_window_focused#t
 
     filled-new-array {v3, v4, v5, v6}, [I
 
@@ -504,36 +504,30 @@
 
     move-result-object v1
 
-    .line 7826
     .local v1, "child":Landroid/view/View;
     if-eqz v1, :cond_0
 
-    .line 7827
-    const v2, 0x1020001
+    const v2, #android:id@checkbox#t
 
     invoke-virtual {v1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
-    .line 7828
     .local v0, "checkbox":Landroid/view/View;
     instance-of v2, v0, Landroid/widget/Checkable;
 
     if-eqz v2, :cond_0
 
-    .line 7829
     invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
 
     move-result v2
 
     if-nez v2, :cond_0
 
-    .line 7830
     const/4 v2, 0x1
 
     return v2
 
-    .line 7833
     .end local v0    # "checkbox":Landroid/view/View;
     :cond_0
     return v3
@@ -591,31 +585,26 @@
 
     if-nez v0, :cond_0
 
-    .line 7733
     iget-object v0, p0, Landroid/widget/AbsListView;->mFlymeMultiChoiceDelayRunnable:Ljava/lang/Runnable;
 
     if-nez v0, :cond_0
 
-    .line 7734
     new-instance v0, Landroid/widget/AbsListView$FlymeInjector$FlymeDelayRunnable;
 
     invoke-direct {v0, p0}, Landroid/widget/AbsListView$FlymeInjector$FlymeDelayRunnable;-><init>(Landroid/widget/AbsListView;)V
 
     iput-object v0, p0, Landroid/widget/AbsListView;->mFlymeMultiChoiceDelayRunnable:Ljava/lang/Runnable;
 
-    .line 7735
     iget-object v0, p0, Landroid/widget/AbsListView;->mFlymeMultiChoiceDelayRunnable:Ljava/lang/Runnable;
 
     invoke-virtual {p0, v0}, Landroid/widget/AbsListView;->post(Ljava/lang/Runnable;)Z
 
-    .line 7740
     :cond_0
     iget-boolean v0, p0, Landroid/widget/AbsListView;->mFlymeFirstInit:Z
 
     if-nez v0, :cond_2
 
-    .line 7741
-    invoke-static {p0}, Landroid/widget/AbsListView;->-get1(Landroid/widget/AbsListView;)Landroid/content/Context;
+    invoke-virtual {p0}, Landroid/widget/AbsListView;->flymeGetFieldContext()Landroid/content/Context;
 
     move-result-object v0
 
@@ -669,26 +658,22 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 7989
     const/4 v1, 0x1
 
     invoke-virtual {p0, v1}, Landroid/widget/AbsListView;->mzEnsureCheckRegion(Z)V
 
-    .line 7993
-    invoke-static {p0}, Landroid/widget/AbsListView;->-get14(Landroid/widget/AbsListView;)I
+    invoke-virtual {p0}, Landroid/widget/AbsListView;->flymeGetFieldScrollY()I
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 7995
-    const-string/jumbo v1, "persist.sys.ui.hw"
+    const-string v1, "persist.sys.ui.hw"
 
     invoke-static {v1, v2}, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String;Z)Z
 
     move-result v0
 
-    .line 7996
     .local v0, "flag":Z
     invoke-virtual {p0}, Landroid/widget/AbsListView;->isHardwareAccelerated()Z
 
@@ -845,35 +830,28 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 7926
-    invoke-static {p0}, Landroid/widget/AbsListView;->-get14(Landroid/widget/AbsListView;)I
+    invoke-virtual {p0}, Landroid/widget/AbsListView;->flymeGetFieldScrollY()I
 
     move-result v1
 
     if-eqz v1, :cond_4
 
-    .line 7927
     const/4 v1, 0x1
 
     invoke-virtual {p0, v1}, Landroid/widget/AbsListView;->mzEnsureCheckRegion(Z)V
 
-    .line 7931
     :goto_0
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
     move-result v0
 
-    .line 7932
     .local v0, "action":I
     if-nez v0, :cond_0
 
-    .line 7933
     iput-boolean v3, p0, Landroid/widget/AbsListView;->mFlymeInCheckRegion:Z
 
-    .line 7934
     iput-boolean v3, p0, Landroid/widget/AbsListView;->mFlymeShowPressed:Z
 
-    .line 7936
     :cond_0
     if-eqz v0, :cond_1
 
