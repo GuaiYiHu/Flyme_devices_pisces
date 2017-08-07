@@ -140,7 +140,8 @@ board_modify_apps := TeleService
 override_property += \
     ro.flyme.romer=GuaiYiHu \
     ro.product.model_romer=pisces_GuaiYiHu \
-    persist.perf.wm_static_blur=false
+    persist.perf.wm_static_blur=false \
+    persist.screenshot.need_blur=false
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
